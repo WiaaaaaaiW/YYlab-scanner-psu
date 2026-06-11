@@ -31,4 +31,9 @@ time.sleep(7)
 print('final angles:',robot.get_angles())
 print('done')
 
+robot.set_digital_out(0,1)
+robot.wait(7)
+robot.set_digital_out(0,0)
+
 #suggest time.sleep around 7 sec wait long enough to let the arm finsih all the movemnet
+#about 24s to 25s to complete a circle for the plate
