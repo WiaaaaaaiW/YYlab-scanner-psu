@@ -1,0 +1,18 @@
+#pc-scanner test
+
+from pymycobot.elephantrobot import ElephantRobot
+ip = '192.168..1.159'
+port = 5001
+
+prtint('Trying to connect...')
+mc = ElephantRobot(ip,port)
+
+result = mc.start_client()
+
+print('Connection result:', result)
+
+if result:
+  print('Connect to robot')
+
+  angles = mc.get_angles()
+  print('Joint angles:',angles)
