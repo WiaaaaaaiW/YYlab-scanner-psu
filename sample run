@@ -24,7 +24,12 @@ robot.command_wait_done()
 time.sleep(7)
 print('Afer zero;',robot.get_angles())
 
-while true
+robot.set_digital_out(0,1)
+robot.wait(3)
+robot.set_digital_out(0,0)
+
+n = 1
+while n <= 8:
   robot.write_angles([-25,-123,-128,-50,8,80],1000)
   robot.command_wait_done()
 
@@ -45,6 +50,7 @@ while true
   robot.set_digital_out(0,1)
   robot.wait(3)
   robot.set_digital_out(0,0)
+  n += 1
 
 #suggest time.sleep around 7 sec wait long enough to let the arm finsih all the movemnet
 #about 24s to 25s to complete a circle for the plate
