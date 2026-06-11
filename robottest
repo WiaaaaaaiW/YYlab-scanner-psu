@@ -1,0 +1,34 @@
+#test the robot
+
+from pymycobot.elephantrobot import ElephantRobot
+import time
+
+robot = ElephantRobot('192.168.1.159', 5001)
+
+#connect
+robot.start_client()
+time.sleep(1)
+
+
+#Enable robot
+robot.start_robot()
+time.sleep(3)
+
+print('current angles:',robot.get_angles())
+
+#move to deafult joints
+robot.write_angles([0,-90,0,-90,0,0],1000)
+robot.command_wait_done()
+
+time.sleep(7)
+print('Afer zero;',robot.get_angles())
+
+#testing angle
+robot.write_angles([-90,-90,-90,-90,-90,-90],1000)
+robot.command_wait_done()
+
+time.sleep(7)
+print('final angles:',robot.get_angles())
+print('done')
+
+#suggest time.sleep around 7 sec wait long enough to let the arm finsih all the movemnet
