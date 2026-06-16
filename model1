@@ -1,0 +1,56 @@
+#sample runing
+
+#setup 
+from pymycobot.elephantrobot import ElephantRobot
+import time
+
+robot = ElephantRobot('192.168.1.159', 5001)
+
+#connect
+robot.start_client()
+time.sleep(1)
+
+
+#Enable robot
+robot.start_robot()
+time.sleep(3)
+
+print('current angles:',robot.get_angles())
+
+#move to deafult joints
+robot.write_angles([0,-90,0,-90,0,0],1000)
+robot.command_wait_done()
+
+time.sleep(7)
+print('Afer zero;',robot.get_angles())
+
+robot.set_digital_out(0,1)
+robot.wait(3)
+robot.set_digital_out(0,0)
+
+n = 1
+while n <= a:
+  robot.write_angles([a,a,a,a,a,a],b)
+  robot.command_wait_done()
+
+  time.sleep(b)
+  print('final angles:',robot.get_angles())
+
+  robot.write_angles([a,a,a,a,a,a],b)
+  robot.command_wait_done()
+
+  time.sleep(b)
+  print('final angles:',robot.get_angles())
+
+  robot.write_angles([a,a,a,a,a,a],b)
+  robot.command_wait_done()  
+
+  time.sleep(b)
+  print('final angles:',robot.get_angles())
+  robot.set_digital_out(0,1)
+  robot.wait(3)
+  robot.set_digital_out(0,0)
+  n += 1
+
+#suggest time.sleep around b sec wait long enough to let the arm finsih all the movemnet
+#about 24s to 25s to complete a circle for the plate
